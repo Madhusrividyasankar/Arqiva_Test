@@ -1,0 +1,46 @@
+# Dynamic String Web Service
+
+## What I Built
+A web service that displays a dynamic string which can be updated without redeployment.
+
+## Components Used
+
+1. **AWS Lambda**
+   - Used to serve the web page
+   - Reads string from S3
+   - File: index.mjs
+
+2. **Amazon S3**
+   - Bucket name: "dynamicstring"
+   - Stores the dynamic string in a text file
+   - File name: "dynamic-string.txt"
+
+3. **API Gateway**
+   - Provides HTTP endpoint to access the Lambda
+   - URL: https://jgwpk691s4.execute-api.us-east-1.amazonaws.com/fetch-string
+
+## How It Works
+1. User visits the API Gateway URL
+2. Lambda function is triggered
+3. Lambda reads the string from S3
+4. Returns HTML with the dynamic string
+
+## Code Structure
+```
+- index.mjs     (Lambda function)
+```
+
+## How to Update the String
+1. Go to S3 bucket "dynamicstring"
+2. Upload new text file or edit "dynamic-string.txt"
+3. New string appears immediately for all users
+
+## Future Improvements
+1. Add a simple web interface to update the string
+2. Add security features
+
+## Why I Made These Choices
+- Used Lambda + API Gateway for serverless architecture
+- Chose S3 for simple string storage
+- Used ES Modules for modern JavaScript
+- Added CORS headers for browser access
